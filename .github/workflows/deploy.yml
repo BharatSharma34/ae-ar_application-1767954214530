@@ -1,0 +1,11 @@
+name: Deploy
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Sync
+        run: |
+          curl -X POST "https://voila-api.mmopro.in/sync-app" \
+            -H "Content-Type: application/json" \
+            -d '{"app": "ae/ar_application-1767954214530", "repo": "https://github.com/BharatSharma34/ae-ar_application-1767954214530.git", "github_token": "${{ secrets.PRIVATE_GITHUB_TOKEN }}"}'
